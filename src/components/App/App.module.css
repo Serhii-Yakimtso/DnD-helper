@@ -14,7 +14,8 @@
 }
 
 .verticalFlexContainer {
-  composes: flexContainer;
+  display: flex;
+  gap: 8px;
   flex-direction: column;
 }
 
