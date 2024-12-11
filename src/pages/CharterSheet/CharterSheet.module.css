@@ -1,0 +1,28 @@
+.container {
+  margin: 0 auto;
+  padding: 8px;
+  width: 1280px;
+}
+
+.flexContainer {
+  display: flex;
+  gap: 8px;
+}
+
+.verticalFlexContainer {
+  display: flex;
+  gap: 8px;
+  flex-direction: column;
+}
+
+.LeftPart {
+  width: calc(var(--desktopScreenWidth) * 0.25);
+}
+
+.middlePart {
+  width: calc(var(--desktopScreenWidth) * 0.55);
+}
+
+.rightPart {
+  width: calc(var(--desktopScreenWidth) * 0.2 - 32px);
+}

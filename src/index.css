@@ -1,3 +1,7 @@
+:root {
+  --desktopScreenWidth: 1280px;
+}
+
 * {
   box-sizing: border-box;
   /* outline: 1px solid tomato; */

@@ -1,48 +1,34 @@
-import "./App.module.css";
-import { CommonInfo } from "../CommonInfo/CommonInfo";
-import { Inventory } from "../Inventory/Inventory";
-import { CharterInfo } from "../CharterInfo/CharterInfo";
-import { Characteristics } from "../Characteristics/Characteristics";
-import { SavingThrows } from "../SavingThrows/SavingThrows";
-import { Features } from "../Features/Features";
-import { Magic } from "../Magic/Magic";
-import { OtherInfo } from "../OtherInfo/OtherInfo";
-import { Attacs } from "../Attacs/Attacs";
-import { CharacterDiscriptions } from "../CharacterDiscriptions/CharacterDiscriptions";
-import { Proficiencis } from "../Proficiencis/Proficiencis";
-import css from "./App.module.css";
+import { lazy, Suspense } from "react";
+import { NavLink, Route, Routes } from "react-router-dom";
+// import HomePage from ;
+// import CharterSheet from "../../pages/CharterSheet/CharterSheet";
+// import NotFound from "../../pages/NotFound/NotFound";
+// import About from "../../pages/About/About";
+
+const HomePage = lazy(() => import("../../pages/HomePage/HomePage"));
+const CharterSheet = lazy(() =>
+  import("../../pages/CharterSheet/CharterSheet")
+);
+const About = lazy(() => import("../../pages/About/About"));
+const NotFound = lazy(() => import("../../pages/About/About"));
 
 function App() {
   return (
-    <div className={`${css.container} ${css.flexContainer}`}>
-      <div className={css.LeftPart}>
-        <CharterInfo />
-        <Inventory />
-      </div>
-      <div className={css.middlePart}>
-        <div className={css.flexContainer}>
-          <div>
-            <Characteristics />
-            <SavingThrows />
-          </div>
-          <CommonInfo />
-        </div>
-        <div className={css.flexContainer}>
-          <Features />
-          <Magic />
-        </div>
-      </div>
-      <div className={css.rightPart}>
-        <div className={css.flexContainer}>
-          <OtherInfo />
-          <div>
-            <CharacterDiscriptions />
-            <Proficiencis />
-          </div>
-        </div>
-        <Attacs />
-      </div>
-    </div>
+    <>
+      <nav>
+        <NavLink to="/">Домашня сторінка</NavLink>
+        <NavLink to="/chartersheet">Лист персонажа</NavLink>
+        <NavLink to="/about">Про нас</NavLink>
+      </nav>
+      <Suspense fallback={<div>Завантаження...</div>}>
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/chartersheet" element={<CharterSheet />} />
+          <Route path="/about" element={<About />} />
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </Suspense>
+    </>
   );
 }
 
